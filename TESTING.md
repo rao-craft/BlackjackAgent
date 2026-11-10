@@ -158,7 +158,7 @@ The picture above is the table the container wrote after the double.
 
 ### Three hosts: GranitePython's, GraniteRust's and GraniteC's `granite run`
 
-The runner installed natively by GranitePython, then driven by each port's `granite` (GraniteRust 45583e4's debug
+The runner installed natively by GranitePython, then driven by each port's `granite` (GraniteRust 2e34ab2's debug
 build, GraniteC f5a6e98's), each in a table folder of its own, through deal (seed 3), hit, stand, a double with no hand
 in play, and `fold`:
 
