@@ -1,0 +1,15 @@
+{
+  "name": "Blackjack",
+  "tagline": "Blackjack a move at a time: the cards drawn in the chat, and the table in Canvas.",
+  "category": "games",
+  "keywords": ["blackjack", "cards", "game", "twenty-one", "casino", "canvas", "png", "python"],
+  "platforms": ["macOS 14", "Linux arm64"],
+  "license": "MIT",
+  "fields": [
+    {"name": "move", "type": "deal|hit|stand|double|show|new", "required": false, "note": "deal, hit, stand, double, show, or new; left out, deal when no hand is in play, else show"},
+    {"name": "bet", "type": "integer", "required": false, "note": "chips to bet on a deal; the last bet when left out, 10 at a new table"},
+    {"name": "seed", "type": "integer", "required": false, "note": "a number that fixes the shuffle, so a game plays again card for card; a fresh shuffle when left out"},
+    {"name": "chips", "type": "integer", "required": false, "note": "chips to sit down with at a new table; 100 when left out"},
+    {"name": "table", "type": "string", "required": false, "note": "where the table's picture is kept, in the folder; blackjack/table.png when left out"}
+  ]
+}

@@ -1,0 +1,1 @@
+{"perform": {"word": "blackjack", "input": {"move": "fold"}, "model": false}, "expect": {"exit": 3, "kind": "input"}}

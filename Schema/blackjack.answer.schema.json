@@ -1,0 +1,113 @@
+{
+  "$id": "https://github.com/rao-craft/BlackjackAgent/blob/main/Schema/blackjack.answer.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {
+      "$ref": "https://github.com/riteshpakala/Granite/blob/main/Schema/granite-agent-answer.schema.json"
+    }
+  ],
+  "description": "A granite-answer/1 answer: the table as text (`screen`), the hands, the chips and the moves on offer, beside the picture it drew.",
+  "properties": {
+    "bet": {
+      "description": "the bet a deal takes when none is named",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "chips": {
+      "description": "the chips held, not counting the stake in play",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "dealer": {
+      "$ref": "#/$defs/hand"
+    },
+    "hand": {
+      "description": "how many hands have been dealt at this table",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "left": {
+      "description": "cards left in the shoe",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "made": {
+      "items": {
+        "properties": {
+          "kind": {
+            "enum": ["table"],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "moves": {
+      "description": "what may be said next",
+      "items": {
+        "enum": ["deal", "hit", "stand", "double", "new"],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "net": {
+      "description": "what the last hand won (or lost, below zero), once it has ended",
+      "type": "integer"
+    },
+    "player": {
+      "$ref": "#/$defs/hand"
+    },
+    "said": {
+      "description": "what just happened, in one or two sentences",
+      "type": "string"
+    },
+    "screen": {
+      "description": "the table as text, one line each, at most 60 columns: copied into the chat inside a text fence",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "stake": {
+      "description": "what the hand in play has at stake: the bet, or twice it once doubled",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "state": {
+      "enum": ["ready", "playing", "won", "lost", "push", "blackjack", "bust"],
+      "type": "string"
+    }
+  },
+  "required": ["screen", "state", "said", "player", "dealer", "chips", "bet", "moves"],
+  "title": "What blackjack answers (granite-answer/1)",
+  "$defs": {
+    "hand": {
+      "properties": {
+        "cards": {
+          "description": "the cards face up, as 10♥ or A♠",
+          "items": {
+            "pattern": "^(A|[2-9]|10|J|Q|K)[♠♥♦♣]$",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "hidden": {
+          "description": "cards face down: the dealer's hole card while the hand is in play",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "soft": {
+          "type": "boolean"
+        },
+        "total": {
+          "description": "the best total of the cards face up",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": ["cards", "total", "soft"],
+      "type": "object"
+    }
+  }
+}

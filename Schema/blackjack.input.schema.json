@@ -1,0 +1,38 @@
+{
+  "$id": "https://github.com/rao-craft/BlackjackAgent/blob/main/Schema/blackjack.input.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "deals blackjack a move at a time: the table as text for the chat, and as a picture for Canvas.",
+  "properties": {
+    "bet": {
+      "description": "chips to bet on a deal; the last bet when left out, 10 at a new table",
+      "type": "integer"
+    },
+    "chips": {
+      "description": "chips to sit down with at a new table; 100 when left out",
+      "type": "integer"
+    },
+    "move": {
+      "description": "deal, hit, stand, double, show, or new; left out, deal when no hand is in play, else show",
+      "enum": [
+        "deal",
+        "hit",
+        "stand",
+        "double",
+        "show",
+        "new"
+      ],
+      "type": "string"
+    },
+    "seed": {
+      "description": "a number that fixes the shuffle, so a game plays again card for card; a fresh shuffle when left out",
+      "type": "integer"
+    },
+    "table": {
+      "description": "where the table's picture is kept, in the folder; blackjack/table.png when left out",
+      "type": "string"
+    }
+  },
+  "required": [],
+  "title": "What blackjack takes",
+  "type": "object"
+}
