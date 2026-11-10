@@ -44,7 +44,7 @@ for label, said in (("1-deal", dealt), ("2-hit", hit), ("3-stand", stood)):
     wide = [line for line in said["screen"] if len(line) > WIDTH]
     if wide:
         failed(f"{label}'s screen has a line over {WIDTH} columns: {wide[0]!r}")
-print("seed 3: 6♠ 4♠ against 10♥ and a hidden card; 9♠ for 19; the dealer busts with 25; 110 chips")
+print("seed 3: 6♠ 4♠ against 10♥ and a hidden card; 9♠ for 19; the dealer busts with 25; 110 chips", flush=True)
 
 picture_path = os.path.join(out, "work", "blackjack", "table.png")
 with open(picture_path, "rb") as opened:
@@ -54,7 +54,7 @@ if png.size(picture) != (drawing.WIDTH, drawing.HEIGHT):
 carried = Table.read(json.loads(drawing.carried(picture)))
 if (carried.state, carried.chips, carried.player) != ("won", 110, ["6S", "4S", "9S"]):
     failed(f"the picture carries {carried.state} {carried.chips} {carried.player}")
-print(f"the table is {drawing.WIDTH}x{drawing.HEIGHT}, {len(picture)} bytes, and carries the hand it shows")
+print(f"the table is {drawing.WIDTH}x{drawing.HEIGHT}, {len(picture)} bytes, and carries the hand it shows", flush=True)
 
 cli = os.path.join(out, "granite-cli")
 subprocess.run([sys.executable, os.path.join(granite, "scripts", "build-cli.py"), "--out", cli, "--python",
